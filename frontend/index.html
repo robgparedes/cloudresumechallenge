@@ -806,14 +806,13 @@
 
 <!-- Summarizer Script -->
 <script>
-  const SUMMARIZE_API = "https://490058394460.execute-api.ap-southeast-2.amazonaws.com/summarize";
+  const SUMMARIZE_API = "https://n3y3h0g0tl.execute-api.ap-southeast-2.amazonaws.com/summarize";
 
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("summarize-btn");
-    const input = document.getElementById("summarizer-input");
     const output = document.getElementById("summarizer-output");
 
-    if (!btn || !input || !output) return;
+    if (!btn || !output) return;
 
     btn.addEventListener("click", async () => {
       btn.disabled = true;
@@ -832,10 +831,15 @@
         });
 
         const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || `HTTP ${res.status}`);
+        }
+
         output.textContent = data.summary || "No summary returned.";
       } catch (err) {
         console.error("Summarizer error:", err);
-        output.textContent = "Error generating summary.";
+        output.textContent = `Error: ${err.message}`;
       } finally {
         btn.disabled = false;
       }
