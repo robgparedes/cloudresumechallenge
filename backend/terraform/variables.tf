@@ -15,3 +15,14 @@ variable "allowed_origin" {
   type        = string
   default     = "https://robertgparedes.com"
 }
+
+variable "cloudflare_api_token" {
+  description = "Cloudflare API token"
+  type        = string
+  sensitive   = true
+}
+
+variable "cloudflare_zone_id" {
+  description = "Cloudflare Zone ID for robertgparedes.com"
+  type        = string
+}
