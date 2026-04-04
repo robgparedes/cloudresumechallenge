@@ -1,9 +1,3 @@
-Here’s your **final, polished, recruiter-ready README** based on everything you built and cleaned up.
-
-You can copy this directly into your repo.
-
----
-
 # Cloud Resume Challenge – AWS + Terraform
 
 ## Overview
