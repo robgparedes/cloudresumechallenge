@@ -15,6 +15,14 @@ jobs:
       contents: read
       id-token: write
 
+    env:
+      TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      TF_VAR_cloudflare_zone_id: ${{ vars.CLOUDFLARE_ZONE_ID }}
+      TF_VAR_acm_certificate_arn: ${{ vars.ACM_CERTIFICATE_ARN }}
+      TF_VAR_frontend_origin_domain: ${{ vars.FRONTEND_ORIGIN_DOMAIN }}
+      TF_VAR_frontend_origin_id: ${{ vars.FRONTEND_ORIGIN_ID }}
+      TF_VAR_web_acl_arn: ${{ vars.WEB_ACL_ARN }}
+
     defaults:
       run:
         shell: bash
@@ -32,7 +40,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.14.3'
+          python-version: '3.12'
 
       - name: Install test dependencies
         run: |
