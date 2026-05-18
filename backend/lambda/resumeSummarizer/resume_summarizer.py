@@ -2,7 +2,7 @@ import json
 import boto3
 
 bedrock = boto3.client("bedrock-runtime", region_name="ap-southeast-2")
-MODEL_ID = "anthropic.claude-3-5-haiku-20241022-v1:0"
+MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
 
 def lambda_handler(event, context):
     method = event.get("requestContext", {}).get("http", {}).get("method")
